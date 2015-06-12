@@ -1,0 +1,12 @@
+{
+  "ctx/composer_name": "Dr Joyce Smith",
+  "ctx/health_care_facility|id": "999999-345",
+  "ctx/health_care_facility|name": "Northumbria Community NHS",
+  "ctx/id_namespace": "NHS-UK",
+  "ctx/id_scheme": "2.16.840.1.113883.2.1.4.3",
+  "ctx/language": "en",
+  "ctx/territory": "GB",
+	  "ctx/time": "2015-02-23T00:11:02.518+02:00",
+    "problem_list/problems_and_issues:0/exclusion_of_a_problem_diagnosis:0/exclusion_statement:0": "no significant problems",
+    "problem_list/problems_and_issues:0/exclusion_of_a_problem_diagnosis:0/date_last_updated": "2015-02-23T16:59:41.736Z"
+}
