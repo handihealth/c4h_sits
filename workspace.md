@@ -1,13 +1,13 @@
 # Code4Health Ehrscape Domain provisioning
 
 Ehrscape Explorer: http://dev.ehrscape.com/explorer
-Ehrscape API: http://dev.ehrscape.com/explorer
+Ehrscape API: http://dev.ehrscape.com
 
-## Across Healthcare Ehrscape subdomain **
+##  Your Code4Health Ehrscape subdomain **
 
-login: c4h_across
-password: CABERMAI
-
+login: c4h_sits
+password: pienDOXy
+Basic Authorisation: Basic YzRoX3NpdHM6cGllbkRPWHk=
 ### Ehrscape Demographics Dummy patient
 
 Name:Steve Walford
@@ -20,6 +20,6 @@ ehrId:  f3da219d-4ca6-461f-a9ea-a1ad5df069e9
 
 ### Ehr data
 
-TemplateId: Across - Visual Acuity Report
+TemplateId: SITS Baseline Report
 compositionId: 49f085f8-fa4f-4d5c-a2f2-f62a1f0af4ab::across.c4h.ehrscape.com::1
 
