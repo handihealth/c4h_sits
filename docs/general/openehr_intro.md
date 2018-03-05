@@ -1,4 +1,4 @@
-#Overview of openEHR and Ehrscape
+# Overview of openEHR and Ehrscape
 openEHR is a open specification for the information model of an electronic health record, published and maintained by the [openEHR Foundation](http://openehr.org).
 
 The full openEHR specification is complex and beyond the scope of this simple overview. In summary, an application developer interacts with an an openEHR system and a standardised information model via a simple set of APIs.
@@ -7,7 +7,7 @@ openEHR does not itself create and publish EHR solutions or applications. Rather
 
 The information model and querying/persistence are defined separately via the use of shareable (normally open-sourced) archetypes and templates, There is no direct interaction with the persistence layer, instead all of the interactions with an openEHR system, including querying happens via the information model. In essence this is not dissimilar to the kind of abstraction provided by Django or Ruby Active Objects, but is designed to work with the health domain, is much more extensible, and is designed to work in a completely language and tecnology-neutral manner. openEHR systems can be built on any programming language, OS platform and with any persistence solution - examples of SQL Server, Oracle, PostgreSQL, mongoDB and MumpsDB solutions exist. It is the responsibility of the back-end developer to map their chosen persistence solution to the openEHR information model and querying system.
 
-##Ehrscape domains and Marand EhrExplorer
+## Ehrscape domains and Marand EhrExplorer
 
    The [Marand Ehrscape](https://dev.ehrscape.com/) openEHR server is set up as a set of 'domains', each of which is populated with its own dummy patient data and openEHR clinical models.
 
@@ -111,22 +111,22 @@ The [Postman add-on](http://getpostman.com) is vey useful for testing API calls 
 [Postman collection and environment files](/technical/postman) are available for the C4H training environment.
 
 
-##openEHR Archetypes and Templates - Clinical Information components
+## openEHR Archetypes and Templates - Clinical Information components
 he HANDI-HOPD Ehrscape API consumes, retrieves and queries patient healthcare data using a standardised specification and querying format defined by the openEHR Foundation. openEHR is complex and can be difficult for novices to understand (even those with a solid technical background) but the Ehrscape API considerably simplifies the interface with openEHR systems.
 
 [openEHR](http://openehr.org) provides a way for clinicians to define and share open-source, vendor-neutral clinical information components ('archetypes' and 'templates') which can be consumed, persisted and queried by different technology stacks, as long as they adhere to the openEHR specifications. Examples of archetypes used in this project are `'Procedure', 'Symptom', and 'Imaging result'`. These are managed by the openEHR Foundation using the [Clinical Knowledge Manager](http://openehr.org/ckm) tool and mirrored to [Github](https://github.com/openEHR/CKM-mirror), with a CC-BY-SA licence.
 
 openEHR systems have a radically different approach to information-modelling and database design. The persistence and querying schema for clinical data is entirely modelled using archetypes and templates. Adding new clinical content or adapting existing definitions usually only involves the clinical informatician uploading a new version of the archetype using tooling. No further data or database modelling is required.
 
-##Overview of openEHR Reference model
+## Overview of openEHR Reference model
 The openEHR Reference model defines a relatively small set of information model constructs which openEHR back-ends must support. This includes a number of generic classes and datatypes.
 
 The Reference model contains virtually no clinical content e.g concepts for Medication, or Diagnosis. These are defined and managed separately as 'archetypes'
 
-###Key openEHR datatypes
+### Key openEHR datatypes
 openEHR has a very rich set of allowable datatypes. A full defiinition is beyond the scope of this document but developers new to this field may find the following notes helpful.
 
-####Datatype: text
+#### Datatype: text
 **'text'** allows the recording of simple,unformatted text. openEHR does not normally constrain the length of string.
 
 ````
@@ -134,7 +134,7 @@ openEHR has a very rich set of allowable datatypes. A full defiinition is beyond
 "asthma_diary_entry/history:0/story_history/comment": "Feeling much better",
 ````
 
-####Datatype: codedText
+#### Datatype: codedText
 
 **'codedText'** is a commonly used datatype in openEHR systems and is a sub-class of text. i.e where-ever *text* is specified *codedText* can be used instead.
 
@@ -151,7 +151,7 @@ A codedText element always includes the terminologyID, the code itself and the t
 When a codedText item is added to a FLAT JSON format document, you must give the code, value and terminology, unless this is a local (atCode) code,
  in which case only the code needs to be provided.
 
-#####External terminology e.g SNOMED CT
+##### External terminology e.g SNOMED CT
 
 Code, terminology and value must be specified
 ````
@@ -161,7 +161,7 @@ Code, terminology and value must be specified
 "asthma_diary_entry/history:0/story_history/symptom:0/symptom_name|terminology": "SNOMED-CT",
 ````
 
-#####Local 'atCode' e.g at0007
+##### Local 'atCode' e.g at0007
 
 Only the code needs to be specified - the value and terminology are not required since they are pre-defined in the openEHR template..
 
@@ -169,7 +169,7 @@ Only the code needs to be specified - the value and terminology are not required
 //FLAT JSON
 "asthma_diary_entry/examination_findings:0/pulmonary_function_testing:0/result_details/pulmonary_flow_rate_result/test_result_name|code": "at0071"
 ````
-####Datatype: ordinal
+#### Datatype: ordinal
  **'ordinal'** is a datatype which combines codedText with a score, expressed as an integer.  
 
    *  0: Green  `local::at0022::Green`
@@ -183,14 +183,14 @@ Only the code needs to be specified - the value and terminology are not required
 "community_dental_final_assessment_letter/assessment_scales/dental_rag_score:0/caries_tooth_decay/caries_risk|value": "Red",
 ````
 
-####Datatype: count
+#### Datatype: count
 **'count'** is a simple integer.  
 ````
 " //FLAT JSON
 "community_dental_final_assessment_letter/investigations_and_results:0/imaging_examination_result:0/result_group/decayed_teeth/decayed_teeth": 4,
 ````
 
-####Datatype: datetime
+#### Datatype: datetime
 **'dateTime'** records a date or date and time using the [ISO8061 format](http://www.w3.org/TR/NOTE-datetime).
 
 ````
@@ -199,7 +199,7 @@ Only the code needs to be specified - the value and terminology are not required
 ````
 
 
-####Datatype: quantity
+#### Datatype: quantity
 **quantity** records a physical quantity along with the appropriate SI units, which should normally be compliant with [UCUM](http://unitsofmeasure.org).
 
 ````
@@ -209,20 +209,20 @@ Only the code needs to be specified - the value and terminology are not required
 
 ````
 
-###Key openEHR concepts and classes
+### Key openEHR concepts and classes
 
-####External identifiers
+#### External identifiers
 
 The subjectId (sometimes called externalId) is a patient identifier by which the patient is known outwith the openEHR system e.g. a hospital identifier or NHS number.
 
-####EHR
+#### EHR
 In an openEHR system, each patient has an ``ehr`` (a per-patient electronic health record) with a unique ``ehrId`` identifier (usually a guid). All references to openEHR patient data are via this ehrId. An API call `GET ehr/` is used to reference the ehrId from the provided subjectId/externalId.
 
 Example ehrId: ``8fa77360-683c-4989-be5e-89a192624b43``
 
 Other subsequent calls to the openEHR system for that particular patient are via the ehrId.
 
-####COMPOSITION
+#### COMPOSITION
 All openEHR data is committed inside a ``composition``, a document-level container which is given a unique ``compositionId``. If the composition is subsequently updated the root compositionId remain unchanged but its version number is incremented. All previous composition versions are retained for audit/legal purposes.
 
 Initial version
@@ -302,7 +302,7 @@ In particular the `ctx` header common to both JSON STRUCTURED and FLAT formats, 
 "ctx/time": "2014-09-23T00:11:02.518+02:00",
 ````
 
-###Handling specific openEHR datatypes
+### Handling specific openEHR datatypes
 
 **text**  
 
